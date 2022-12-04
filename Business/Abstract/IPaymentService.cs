@@ -4,6 +4,6 @@ namespace Business.Abstract
 {
     public interface IPaymentService
     {
-        IResult Payment(); //data döndürmüyor.
+        IResult Payment();
     }
 }

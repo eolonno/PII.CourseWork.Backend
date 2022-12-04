@@ -15,10 +15,10 @@ namespace WebAPI.Controllers
             _creditCardService = creditCardService;
         }
 
-        [HttpGet("getallbycustomerid")]
-        public IActionResult GetAllByCustomerId(int customerId)
+        [HttpGet("getallbyuserid")]
+        public IActionResult GetAllByCustomerId(int userId)
         {
-            var result = _creditCardService.GetAllByCustomerId(customerId);
+            var result = _creditCardService.GetAllByUserId(userId);
             if (result.Success) return Ok(result);
 
             return BadRequest(result);

@@ -51,7 +51,7 @@ namespace DataAccess.Concrete.EntityFramework
                     select new UserDetailDto
                     {
                         Id = u.Id,
-                        //CustomerId = c.Id,
+                        //UserId = c.Id,
                         FirstName = u.FirstName,
                         LastName = u.LastName,
                         Email = u.Email,

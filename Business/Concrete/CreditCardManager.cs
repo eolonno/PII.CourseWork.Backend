@@ -24,10 +24,10 @@ namespace Business.Concrete
         }
 
         [SecuredOperation("user")]
-        public IDataResult<List<CreditCard>> GetAllByCustomerId(int customerId)
+        public IDataResult<List<CreditCard>> GetAllByUserId(int userId)
         {
             return new SuccessDataResult<List<CreditCard>>(_creditCardDal.GetAll(c =>
-                c.CustomerId == customerId)); //bir kullanıcının tüm kartları
+                c.UserId == userId));
         }
 
         [SecuredOperation("user")]

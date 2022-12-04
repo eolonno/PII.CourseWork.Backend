@@ -57,6 +57,9 @@ namespace Business.Concrete
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash,
                     userToCheck.PasswordSalt)) return new ErrorDataResult<User>(Messages.PasswordError);
 
+            if (userToCheck.IsBanned)
+                return new ErrorDataResult<User>(Messages.AuthorizationDenied);
+
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
 

@@ -24,7 +24,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        //user döndürür
         [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
@@ -65,7 +64,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        //user döndürür
         [HttpGet("getuserdetailbyemail")]
         public IActionResult GetUserDetailByMail(string email)
         {
@@ -81,6 +79,15 @@ namespace WebAPI.Controllers
             var result = _userService.UpdateUserDetails(userDetailForUpdate);
             if (result.Success) return Ok(result);
 
+            return BadRequest(result);
+        }
+
+        [HttpPut("toggle-user-status/{userId}")]
+        public IActionResult ToggleUserStatus([FromRoute] int userId)
+        {
+            var result = _userService.ToggleUserStatus(userId);
+
+            if (result.Success) return Ok(result);
             return BadRequest(result);
         }
     }

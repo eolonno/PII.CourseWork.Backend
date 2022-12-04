@@ -101,6 +101,30 @@ CREATE TABLE [dbo].[CreditCards] (
     CONSTRAINT [FK_CreditCards_Customers] FOREIGN KEY ([CustomerId]) REFERENCES [dbo].[Customers] ([Id])
 );
 
+-- Rentals
+ALTER TABLE [dbo].[Rentals] DROP CONSTRAINT [FK_Rentals_Customers]
+GO
+
+ALTER TABLE [dbo].[Rentals] DROP COLUMN [CustomerId]
+GO
+
+ALTER TABLE [dbo].[Rentals] ADD [UserId] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Users]([Id])
+
+
+-- Credit Card
+ALTER TABLE [dbo].[CreditCards] DROP CONSTRAINT [FK_CreditCards_Customers]
+GO
+
+ALTER TABLE [dbo].[CreditCards] DROP COLUMN [CustomerId]
+GO
+
+ALTER TABLE [dbo].[CreditCards] ADD [UserId] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Users]([Id])
+
+-- User
+
+ALTER TABLE [dbo].[Users] ADD [IsBanned] BIT NOT NULL DEFAULT 0
+
+-- Insert Claims
 
 INSERT INTO [dbo].[OperationClaims] ([Name]) VALUES
 ('admin'),

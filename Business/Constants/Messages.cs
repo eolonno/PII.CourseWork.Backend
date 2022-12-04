@@ -63,6 +63,7 @@
         public static string UserAlreadyExists = "UserAlreadyExists";
         public static string AccessTokenCreated = "AccessTokenCreated";
         public static string AuthorizationDenied = "AuthorizationDenied";
+        public static string UserStatusChanged = "User status was successfully changed";
 
         public static string creditCardAdded = "creditCardAdded";
         public static string creditCardDeleted = "creditCardDeleted";

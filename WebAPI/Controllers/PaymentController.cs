@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
             _paymentService = paymentService;
         }
 
-        [HttpGet("payment")]
+        [HttpGet]
         public IActionResult Payment() // Test
         {
             var result = _paymentService.Payment();

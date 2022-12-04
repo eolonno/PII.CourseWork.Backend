@@ -8,7 +8,7 @@ namespace Business.Abstract
     {
         IDataResult<CreditCard> GetById(int id);
 
-        IDataResult<List<CreditCard>> GetAllByCustomerId(int customerId);
+        IDataResult<List<CreditCard>> GetAllByUserId(int userId);
 
         IResult Add(CreditCard creditCard);
 

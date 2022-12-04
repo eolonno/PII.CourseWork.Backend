@@ -59,6 +59,22 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == Id));
         }
 
+        [SecuredOperation("moderator,admin")]
+        public IResult ToggleUserStatus(int userId)
+        {
+            var user = GetById(userId).Data;
+            user.IsBanned = !user.IsBanned;
+
+            var updateResult = Update(user);
+
+            if (updateResult.Success)
+            {
+                return new SuccessResult(Messages.UserStatusChanged);
+            }
+
+            return new ErrorResult(updateResult.Message);
+        }
+
         public IDataResult<UserDetailDto> GetUserDetailDtoByUserId(int id)
         {
             return new SuccessDataResult<UserDetailDto>(_userDal.GetUserDetailByUserId(id));
@@ -97,26 +113,6 @@ namespace Business.Concrete
             var customer = _customerDal.Get(c => c.Id == userDetailForUpdate.CustomerId);
             customer.CompanyName = userDetailForUpdate.CompanyName;
             _customerDal.Update(customer);
-
-            if (!string.IsNullOrEmpty(userDetailForUpdate.NationalIdentity))
-            {
-                var findeks = _findeksService.GetByCustomerId(userDetailForUpdate.CustomerId).Data;
-                if (findeks == null)
-                {
-                    var newFindeks = new Findeks
-                    {
-                        CustomerId = userDetailForUpdate.CustomerId,
-                        NationalIdentity = userDetailForUpdate.NationalIdentity
-                    };
-                    _findeksService.Add(newFindeks);
-                }
-                else
-                {
-                    findeks.NationalIdentity = userDetailForUpdate.NationalIdentity;
-                    var newFindeks = _findeksService.CalculateFindeksScore(findeks).Data;
-                    _findeksDal.Update(newFindeks);
-                }
-            }
 
             return new SuccessResult(Messages.UserDetailsUpdated);
         }

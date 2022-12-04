@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
             optionsBuilder.UseSqlServer(
                 @"Data Source=localhost;Initial Catalog=Recap-db;User Id=a;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
-            optionsBuilder.LogTo(Console.WriteLine);
+            //optionsBuilder.LogTo(Console.WriteLine);
         }
     }
 }

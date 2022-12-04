@@ -16,5 +16,6 @@ namespace Business.Abstract
         IResult Delete(User user);
         IResult Update(User user);
         IResult UpdateUserDetails(UserDetailForUpdateDto userDetailForUpdate);
+        IResult ToggleUserStatus(int userId);
     }
 }
