@@ -13,18 +13,20 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using var context = new ReCapDbContext();
             var result = from r in context.Rentals
-                join u in context.Users
-                    on r.UserId equals u.Id
-                join car in context.Cars
-                    on r.CarId equals car.Id
+                join u in context.Users on r.UserId equals u.Id
+                join car in context.Cars on r.CarId equals car.Id
+                join brand in context.Brands on car.BrandId equals brand.Id
                 select new RentalDetailDto
                 {
                     CarId = car.Id,
+                    RentalId = r.Id,
                     CustomerId = u.Id,
                     CustomerName = u.FirstName + " " + u.LastName,
                     CarName = car.Name,
-                    BrandName = car.BrandId.ToString(),
-                    ReturnDate = r.ReturnDate
+                    BrandName = brand.Name,
+                    ReturnDate = r.ReturnDate,
+                    RentalStartDate = r.RentStartDate,
+                    RentalEndDate = r.RentEndDate
                 };
             return result.ToList();
         }
