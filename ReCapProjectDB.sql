@@ -110,6 +110,8 @@ GO
 
 ALTER TABLE [dbo].[Rentals] ADD [UserId] INT NOT NULL FOREIGN KEY REFERENCES [dbo].[Users]([Id])
 
+ALTER TABLE [dbo].[Rentals] ADD [IsCanceled] BIT NOT NULL DEFAULT 0
+
 
 -- Credit Card
 ALTER TABLE [dbo].[CreditCards] DROP CONSTRAINT [FK_CreditCards_Customers]

@@ -22,5 +22,14 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
+
+        [HttpGet("discount")]
+        public IActionResult GetDiscount(int userId)
+        {
+            var result = _paymentService.GetDiscount(userId);
+            if (result.Success) return Ok(result);
+
+            return BadRequest(result);
+        }
     }
 }

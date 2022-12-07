@@ -74,6 +74,7 @@
         public static string RentalNotAvailable = "RentalNotAvailable";
         public static string RentError = "Araba zaten kiralanmış";
         public static string RentalUndeliveredCar = "Araba henüz teslim edilmedi.";
+        public static string RentalCanceled = "Rental was successfully canceled";
 
         public static string OperationClaimAdded = "OperationClaimAdded";
         public static string OperationClaimUpdated = "OperationClaimUpdated";

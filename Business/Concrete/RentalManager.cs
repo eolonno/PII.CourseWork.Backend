@@ -40,6 +40,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductDeleted);
         }
 
+        public IResult Cancel(Rental rental)
+        {
+            _rentalDal.CancelRental(rental.Id);
+            return new SuccessResult(Messages.RentalCanceled);
+        }
+
         [SecuredOperation("rental.update,moderator,admin")]
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)

@@ -81,5 +81,13 @@ namespace WebAPI.Controllers
             if (result.Success) return Ok(result);
             return BadRequest(result);
         }
+
+        [HttpPost("cancel")]
+        public IActionResult Cancel(Rental rental)
+        {
+            var result = _rentalService.Cancel(rental);
+            if (result.Success) return Ok(result);
+            return BadRequest(result);
+        }
     }
 }

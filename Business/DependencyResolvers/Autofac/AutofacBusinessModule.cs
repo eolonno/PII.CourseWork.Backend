@@ -49,7 +49,7 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<FakeFindeksManager>().As<IFindeksService>().SingleInstance();
             builder.RegisterType<EfFindeksDal>().As<IFindeksDal>().SingleInstance();
 
-            builder.RegisterType<FakePaymentManager>().As<IPaymentService>().SingleInstance();
+            builder.RegisterType<PaymentManager>().As<IPaymentService>().SingleInstance();
 
             builder.RegisterType<OperationClaimManager>().As<IOperationClaimService>().SingleInstance();
 

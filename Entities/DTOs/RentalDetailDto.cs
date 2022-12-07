@@ -11,6 +11,7 @@ namespace Entities.DTOs
         public string CustomerName { get; set; }
         public string CarName { get; set; }
         public string BrandName { get; set; }
+        public bool IsCanceled { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime RentalStartDate { get; set; }
         public DateTime RentalEndDate { get; set; }
