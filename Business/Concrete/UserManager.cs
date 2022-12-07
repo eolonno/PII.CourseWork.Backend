@@ -14,16 +14,11 @@ namespace Business.Concrete
     public class UserManager : IUserService
     {
         private readonly ICustomerDal _customerDal;
-        private readonly IFindeksDal _findeksDal;
-        private readonly IFindeksService _findeksService;
         private readonly IUserDal _userDal;
 
-        public UserManager(IUserDal userDal, IFindeksService findeksService, IFindeksDal findeksDal,
-            ICustomerDal customerDal)
+        public UserManager(IUserDal userDal, ICustomerDal customerDal)
         {
             _userDal = userDal;
-            _findeksService = findeksService;
-            _findeksDal = findeksDal;
             _customerDal = customerDal;
         }
 

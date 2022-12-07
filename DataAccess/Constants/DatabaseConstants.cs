@@ -15,11 +15,6 @@ namespace DataAccess.Constants
             public const string RentalUpdate = "rental.update";
             public const string RentalDelete = "rental.delete";
 
-            public const string FindeksGet = "findeks.get";
-            public const string FindeksAdd = "findeks.add";
-            public const string FindeksUpdate = "findeks.update";
-            public const string FindeksDelete = "findeks.delete";
-
             public const string CustomerGet = "customer.get";
             public const string CustomerAdd = "customer.add";
             public const string CustomerUpdate = "customer.update";

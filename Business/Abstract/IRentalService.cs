@@ -19,6 +19,5 @@ namespace Business.Abstract
 
         //IResult CheckReturnDateByCarId(int carId);    //=>rentalmanager
         IResult IsRentable(Rental rental);
-        IResult CheckFindeksScoreSufficiency(Rental rental);
     }
 }

@@ -46,9 +46,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CreditCardManager>().As<ICreditCardService>().SingleInstance();
             builder.RegisterType<EfCreditCardDal>().As<ICreditCardDal>().SingleInstance();
 
-            builder.RegisterType<FakeFindeksManager>().As<IFindeksService>().SingleInstance();
-            builder.RegisterType<EfFindeksDal>().As<IFindeksDal>().SingleInstance();
-
             builder.RegisterType<PaymentManager>().As<IPaymentService>().SingleInstance();
 
             builder.RegisterType<OperationClaimManager>().As<IOperationClaimService>().SingleInstance();

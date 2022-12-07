@@ -15,13 +15,11 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         private readonly ICarService _carService;
-        private readonly IFindeksService _findeksService;
         private readonly IRentalDal _rentalDal;
 
-        public RentalManager(IRentalDal rentalDal, ICarService carService, IFindeksService findeksService)
+        public RentalManager(IRentalDal rentalDal, ICarService carService)
         {
             _carService = carService;
-            _findeksService = findeksService;
             _rentalDal = rentalDal;
         }
 
@@ -87,17 +85,6 @@ namespace Business.Concrete
         public IDataResult<List<Rental>> GetAllByCarId(int carId)
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == carId));
-        }
-
-        public IResult CheckFindeksScoreSufficiency(Rental rental)
-        {
-            var car = _carService.GetById(rental.CarId).Data;
-            var findeks = _findeksService.GetByCustomerId(rental.UserId).Data;
-
-            if (findeks == null) return new ErrorResult(Messages.FindeksNotFound);
-            if (findeks.Score < car.MinFindeksScore) return new ErrorResult(Messages.FindeksNotEnoughForCar);
-
-            return new SuccessResult();
         }
     }
 }
