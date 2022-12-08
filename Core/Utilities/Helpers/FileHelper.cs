@@ -7,8 +7,8 @@ namespace Core.Utilities.Helpers
 {
     public class FileHelper
     {
-        private static readonly string _currentDirectory = Environment.CurrentDirectory + "\\wwwroot";
-        private static readonly string _folderName = "\\images\\";
+        private static readonly string _currentDirectory = Environment.CurrentDirectory + "/wwwroot";
+        private static readonly string _folderName = "/images/";
 
         public static IResult Upload(IFormFile file)
         {
@@ -20,7 +20,7 @@ namespace Core.Utilities.Helpers
             if (typeValid.Message != null) return new ErrorResult(typeValid.Message);
             CheckDirectoryExists(_currentDirectory + _folderName);
             CreateImageFile(_currentDirectory + _folderName + randomName + type, file);
-            return new SuccessResult((_folderName + randomName + type).Replace("\\", "/"));
+            return new SuccessResult((_folderName + randomName + type));
         }
 
         public static IResult Update(IFormFile file, string imagePath)
@@ -32,10 +32,10 @@ namespace Core.Utilities.Helpers
             var typeValid = CheckFileTypeValid(type);
             var randomName = Guid.NewGuid().ToString();
             if (typeValid.Message != null) return new ErrorResult(typeValid.Message);
-            DeleteOldImageFile((_currentDirectory + imagePath).Replace("/", "\\"));
+            DeleteOldImageFile((_currentDirectory + imagePath));
             CheckDirectoryExists(_currentDirectory + _folderName);
             CreateImageFile(_currentDirectory + _folderName + randomName + type, file);
-            return new SuccessResult((_folderName + randomName + type).Replace("\\", "/"));
+            return new SuccessResult((_folderName + randomName + type));
         }
 
         public static IResult Delete(string path)

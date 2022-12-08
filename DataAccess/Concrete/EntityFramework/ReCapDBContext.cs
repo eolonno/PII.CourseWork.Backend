@@ -21,8 +21,8 @@ namespace DataAccess.Concrete.EntityFramework
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                @"Data Source=localhost;Initial Catalog=Recap-db;User Id=a;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            optionsBuilder.UseSqlServer(@"Data Source=sql-server-db;Initial Catalog=course-work-db;User Id=a;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;");
+            //optionsBuilder.UseSqlServer(@"Data Source=localhost;Initial Catalog=Recap-db;User Id=a;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
             //optionsBuilder.LogTo(Console.WriteLine);
         }
