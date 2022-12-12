@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("getall")]
-        [Authorize] //sisteme giriş yapman ve tokenini saklaman gerekli...
+        [Authorize]
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();

@@ -13,7 +13,7 @@ namespace Core.Aspects.Autofac.Validation
 
         public ValidationAspect(Type validatorType)
         {
-            if (!typeof(IValidator).IsAssignableFrom(validatorType)) throw new Exception("Hatttaaa");
+            if (!typeof(IValidator).IsAssignableFrom(validatorType)) throw new NotImplementedException();
 
             _validatorType = validatorType;
         }

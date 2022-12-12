@@ -7,11 +7,11 @@ using Entities.DTOs;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserDal : EfEntityRepositoryBase<User, ReCapDbContext>, IUserDal
+    public class EfUserDal : EfEntityRepositoryBase<User, CourseWorkDbContext>, IUserDal
     {
         public List<OperationClaim> GetClaims(User user)
         {
-            using var context = new ReCapDbContext();
+            using var context = new CourseWorkDbContext();
             var result = from operationClaim in context.OperationClaims
                 join userOperationClaim in context.UserOperationClaims
                     on operationClaim.Id equals userOperationClaim.OperationClaimId
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public UserDetailDto GetUserDetail(string userMail)
         {
-            using var context = new ReCapDbContext();
+            using var context = new CourseWorkDbContext();
             var result =
                 (from u in context.Users
                     join c in context.Customers
@@ -42,20 +42,15 @@ namespace DataAccess.Concrete.EntityFramework
 
         public UserDetailDto GetUserDetailByUserId(int userId)
         {
-            using var context = new ReCapDbContext();
+            using var context = new CourseWorkDbContext();
             var result =
                 (from u in context.Users
-                    //join c in context.Customers
-                    //    on u.Id equals c.UserId
-                    //where u.Id == userId
                     select new UserDetailDto
                     {
                         Id = u.Id,
-                        //UserId = c.Id,
                         FirstName = u.FirstName,
                         LastName = u.LastName,
                         Email = u.Email,
-                        //CompanyName = c.CompanyName
                     }).FirstOrDefault();
             return result;
         }

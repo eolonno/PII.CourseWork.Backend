@@ -22,11 +22,10 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        [CacheAspect(30)] //mermoyde bunun return değerini 10 dakika tut
-        [PerformanceAspect(5)] //bu method 5 saniyeden fazla çaşılırsa beni uyar.
+        [CacheAspect(30)]
+        [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetAll()
         {
-            //Thread.Sleep(5000);//performans denemesi içindi.
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.ProductsListed);
         }
 
@@ -69,7 +68,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductUpdated);
         }
 
-        public IResult AddTransactionalTest(Car car) //mantığını anlayamadım
+        public IResult AddTransactionalTest(Car car)
         {
             _carDal.Update(car);
             _carDal.Add(car);

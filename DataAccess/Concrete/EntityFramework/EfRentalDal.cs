@@ -8,11 +8,11 @@ using Entities.DTOs;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfRentalDal : EfEntityRepositoryBase<Rental, ReCapDbContext>, IRentalDal
+    public class EfRentalDal : EfEntityRepositoryBase<Rental, CourseWorkDbContext>, IRentalDal
     {
         public List<RentalDetailDto> GetRentalDetails()
         {
-            using var context = new ReCapDbContext();
+            using var context = new CourseWorkDbContext();
             var result = from r in context.Rentals
                 join u in context.Users on r.UserId equals u.Id
                 join car in context.Cars on r.CarId equals car.Id
@@ -35,7 +35,7 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void CancelRental(int rentalId)
         {
-            using var context = new ReCapDbContext();
+            using var context = new CourseWorkDbContext();
             var rental = context.Rentals.FirstOrDefault(x => x.Id == rentalId);
             rental!.IsCanceled = true;
 

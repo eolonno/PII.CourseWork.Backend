@@ -5,11 +5,11 @@ using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCustomerDal : EfEntityRepositoryBase<Customer, ReCapDbContext>, ICustomerDal
+    public class EfCustomerDal : EfEntityRepositoryBase<Customer, CourseWorkDbContext>, ICustomerDal
     {
         public Customer GetByUserId(int UserId)
         {
-            using var context = new ReCapDbContext();
+            using var context = new CourseWorkDbContext();
             var result = from c in context.Customers
                 join u in context.Users
                     on c.UserId equals u.Id

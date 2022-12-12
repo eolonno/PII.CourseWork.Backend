@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 
 namespace Core.Extensions
 {
-    //Hatanın detaylarına dair
     public class ErrorDetails
     {
         public string Message { get; set; }

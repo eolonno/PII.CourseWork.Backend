@@ -36,7 +36,7 @@ namespace Core.CrossCuttingConcerns.Caching.Microsoft
         public bool IsAdd(string key)
         {
             return _memoryCache.TryGetValue(key, out _);
-            //bize datayı boşuna döndürmesin diye out _ gönderiyoruz. Tek amacımzı cachede o var mı yok mı onu öğrenmek.
+            //We send out _ so that it does not return the data to us in vain. Our only goal is to find out if it exists in the cache or not.
         }
 
         public void Remove(string key)
@@ -46,7 +46,7 @@ namespace Core.CrossCuttingConcerns.Caching.Microsoft
 
         public void RemoveByPattern(string pattern)
         {
-            //Reflection var ama tam nerede bilmiyorum.
+            //Reflection exists but I don't know exactly where.
             var cacheEntriesCollectionDefinition = typeof(MemoryCache).GetProperty("EntriesCollection",
                 BindingFlags.NonPublic | BindingFlags.Instance);
             var cacheEntriesCollection = cacheEntriesCollectionDefinition.GetValue(_memoryCache) as dynamic;

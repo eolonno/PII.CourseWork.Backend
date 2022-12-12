@@ -4,7 +4,7 @@ using DataAccess.Abstract;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserOperationClaimDal : EfEntityRepositoryBase<UserOperationClaim, ReCapDbContext>,
+    public class EfUserOperationClaimDal : EfEntityRepositoryBase<UserOperationClaim, CourseWorkDbContext>,
         IUserOperationClaimDal
     {
     }

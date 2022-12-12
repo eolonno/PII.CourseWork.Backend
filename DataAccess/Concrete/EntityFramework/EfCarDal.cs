@@ -9,11 +9,11 @@ using Entities.DTOs;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : EfEntityRepositoryBase<Car, ReCapDbContext>, ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Car, CourseWorkDbContext>, ICarDal
     {
         public List<CarDetailDto> GetCarDetails(Expression<Func<CarDetailDto, bool>> filter = null)
         {
-            using var context = new ReCapDbContext();
+            using var context = new CourseWorkDbContext();
 
             var result = from p in context.Cars
                          join b in context.Brands on p.BrandId equals b.Id

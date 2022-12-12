@@ -73,20 +73,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        //resmin url'si gönderiliyor.
         [HttpGet("getfilebyid")]
         public IActionResult GetFileById(int id)
         {
             var result = _carImageService.Get(id);
 
-            if (result.Success)
-            {
-                var path = "wwwroot" + result.Data.ImagePath;
-                var b = System.IO.File.ReadAllBytes(path);
-                return File(b, "image/png");
-            }
+            if (!result.Success) return BadRequest(result);
+            var path = "wwwroot" + result.Data.ImagePath;
+            var b = System.IO.File.ReadAllBytes(path);
+            return File(b, "image/png");
 
-            return BadRequest(result);
         }
     }
 }

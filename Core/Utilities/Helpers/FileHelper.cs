@@ -47,13 +47,13 @@ namespace Core.Utilities.Helpers
         private static IResult CheckFileExists(IFormFile file)
         {
             if (file != null && file.Length > 0) return new SuccessResult();
-            return new ErrorResult("Böyle bir dosya yok!");
+            return new ErrorResult("There is no such file!");
         }
 
         private static IResult CheckFileTypeValid(string type)
         {
             if (type != ".jpeg" && type != ".jpg" && type != ".png")
-                return new ErrorResult("Yanlış dosya uzantısı! Png, Jpg veya Jpeg olmalı.");
+                return new ErrorResult("Wrong file extension! Should be png, jpg or jpeg.");
             return new SuccessResult();
         }
 

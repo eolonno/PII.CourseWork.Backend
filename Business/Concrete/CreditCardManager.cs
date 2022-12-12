@@ -35,7 +35,7 @@ namespace Business.Concrete
         {
             _creditCardDal.Add(creditCard);
 
-            return new SuccessResult(Messages.creditCardAdded);
+            return new SuccessResult(Messages.CreditCardAdded);
         }
 
         [SecuredOperation("user")]
@@ -43,7 +43,7 @@ namespace Business.Concrete
         {
             _creditCardDal.Delete(creditCard);
 
-            return new SuccessResult(Messages.creditCardDeleted);
+            return new SuccessResult(Messages.CreditCardDeleted);
         }
     }
 }

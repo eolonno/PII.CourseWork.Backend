@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class ReCapDbContext : DbContext
+    public class CourseWorkDbContext : DbContext
     {
         public DbSet<Car> Cars { get; set; }
         public DbSet<Color> Colors { get; set; }
