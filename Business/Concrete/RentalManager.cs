@@ -74,7 +74,7 @@ namespace Business.Concrete
         {
             var result = _rentalDal.GetAll(r => r.CarId == rental.CarId);
 
-            if (result.Any(r =>
+            if (result.Where(x => !x.IsCanceled).Any(r =>
                     r.RentEndDate >= rental.RentStartDate &&
                     r.RentStartDate <= rental.RentEndDate
                 )) return new ErrorResult(Messages.RentalNotAvailable);

@@ -35,7 +35,7 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductDeleted);
         }
 
-        [SecuredOperation("user.update,moderator,admin")]
+        [SecuredOperation("user,moderator,admin")]
         public IResult Update(User user)
         {
             _userDal.Update(user);
@@ -104,10 +104,6 @@ namespace Business.Concrete
             }
 
             _userDal.Update(user);
-
-            var customer = _customerDal.Get(c => c.Id == userDetailForUpdate.CustomerId);
-            customer.CompanyName = userDetailForUpdate.CompanyName;
-            _customerDal.Update(customer);
 
             return new SuccessResult(Messages.UserDetailsUpdated);
         }

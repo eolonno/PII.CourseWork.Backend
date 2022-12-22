@@ -51,7 +51,7 @@ namespace DataAccess.Concrete.EntityFramework
                         FirstName = u.FirstName,
                         LastName = u.LastName,
                         Email = u.Email,
-                    }).FirstOrDefault();
+                    }).FirstOrDefault(x => x.Id == userId);
             return result;
         }
     }

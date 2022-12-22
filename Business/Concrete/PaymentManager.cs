@@ -32,7 +32,7 @@ namespace Business.Concrete
             {
                 var numberOfRentalDays = (double)rentalDetails
                     .Where(x => !x.IsCanceled)
-                    .Select(x => x.RentalStartDate - x.RentalEndDate)
+                    .Select(x => x.RentalEndDate - x.RentalStartDate)
                     .Aggregate((x, y) => x.Add(y))
                     .Days;
 
